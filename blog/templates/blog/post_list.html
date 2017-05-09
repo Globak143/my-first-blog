@@ -1,19 +1,13 @@
-<html>
-<head>Django Girls Blog</head>
-<body>
-	<div>
-		<h1><a href="">Django Girl Blog</a></h1>
-	</div>
-	<div>
-		<p>published: 26.04.2017, 10.07</p>
-		<h2><a href="">My first post</a></h2>
-		<p>i love web development. and certainly Django powered website makes things easy</p>
-	</div>
-	<div>
-		<p>published: 26.04.2017, 10.07</p>
-		<h2><a href="">My second post</a></h2>
+{% extends 'blog/base.html' %}
 
-		<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-	</div>
-</body>
-</html>
+{% block content %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+{% endblock content %}            
